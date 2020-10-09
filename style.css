@@ -1,3 +1,7 @@
+.container {
+    display: flex;
+}
+
 #grid {
     width: 200px;
     height: 400px;
@@ -15,6 +19,18 @@
     background-color: blue;
 }
 
-.taken {
-    background-color: transparent;
+
+
+div.mini-grid {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    flex-wrap: wrap;
+    background-color: yellow;
+    margin-left:50px;
 }
+
+.mini-grid div {
+    height: 20px;
+    width: 20px;
+  }
