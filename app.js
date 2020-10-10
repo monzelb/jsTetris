@@ -27,14 +27,15 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.querySelector('#start-button');
     const width = 10;
     let nextRandom = 0;
+    let timerSpeed = 1000;
     let timerId;
     let score = 0;
     const colors = [
-        'orange',
-        'red',
-        'purple',
-        'green',
-        'blue'
+        '#3a86ff',
+        '#8338ec',
+        '#ff006e',
+        '#fb5607',
+        '#ffbe0b'
     ]
 
 
@@ -105,12 +106,14 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //assign functions to keycodes
     function control(e) {
+        console.log(e.which);
         if(e.which === 37) {
             moveLeft();
         }
-        else if (e.which === 38){
+        else if (e.which === 32){
             rotate()
         }
+
         else if (e.which === 39){
             moveRight()
         }
@@ -119,7 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    document.addEventListener('keyup', control);
+    document.addEventListener('keydown', control);
 
     //move down dunction
     function moveDown(){
@@ -175,6 +178,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //rotate the tetromino
     function rotate() {
         undraw();
+
         currentRotation++;
         //If current rotation is in the final position, go back to first rotation
         if(currentRotation === current.length){
@@ -206,8 +210,8 @@ document.addEventListener('DOMContentLoaded', () => {
             square.style.backgroundColor = '';
         })
         upNextTetrominoes[nextRandom].forEach( index => {
-            displaySquares[displayIndex + index].classList.add('tetromino');
-            displaySquares[displayIndex + index].style.backgroundColor = colors[nextRandom];
+            displaySquares[displayIndex + index + 1].classList.add('tetromino');
+            displaySquares[displayIndex + index + 1].style.backgroundColor = colors[nextRandom];
         })
     }
 
@@ -219,7 +223,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         else {
             draw();
-            timerId = setInterval(moveDown, 1000);
+            timerId = setInterval(moveDown, timerSpeed);
             nextRandom = Math.floor(Math.random()*theTetrominoes.length);
             displayShape();
         }
@@ -231,6 +235,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
             if(row.every(index => squares[index].classList.contains('taken'))){
                 score += 10;
+                if (score % 50 === 0) {
+                    timerSpeed *= .8;
+                    clearInterval(timerId);
+                    setInterval(moveDown, timerSpeed);
+                }
                 scoreDisplay.innerHTML = score;
                 row.forEach(index => {
                     squares[index].classList.remove('taken' , 'tetromino');
