@@ -111,9 +111,11 @@ document.addEventListener('DOMContentLoaded', () => {
             moveLeft();
         }
         else if (e.which === 32){
-            rotate()
+            rotate("right");
         }
-
+        else if (e.which === 91){
+            rotate("left");
+        }
         else if (e.which === 39){
             moveRight()
         }
@@ -176,14 +178,26 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     //rotate the tetromino
-    function rotate() {
+    function rotate(dir) {
         undraw();
+        console.log(currentRotation);
+        
 
-        currentRotation++;
-        //If current rotation is in the final position, go back to first rotation
-        if(currentRotation === current.length){
-            currentRotation = 0;
+        if (dir ==="right"){
+            currentRotation++;
+            if(currentRotation === current.length){
+                currentRotation = 0;
+            }
         }
+        else if (dir ==="left"){
+            if(currentRotation === 0){
+                currentRotation = current.length;
+            }
+            currentRotation--;
+
+        }
+        //If current rotation is in the final position, go back to first rotation
+        
         current = theTetrominoes[random][currentRotation];
         draw();
     }

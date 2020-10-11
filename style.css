@@ -1,10 +1,18 @@
 body {
     background-color:#cbf3f0;
+    font-family: "arial, sans serif";
 }
 
 .container {
     display: flex;
     justify-content: center;
+}
+
+div.instrux {
+    width:300px;
+    margin-top:20px;
+    font-size: 20px;
+    padding-right:20px;
 }
 
 #grid {
