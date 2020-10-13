@@ -45,6 +45,15 @@ h3.score {
     margin-left:20px;
 }
 
+div.mini-grid-container {
+    
+}
+
+h3.mgHeader {
+    margin-left: 50px;
+    text-align: center;
+}
+
 div.mini-grid {
     width: 120px;
     height: 120px;

@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    var ContainerDiv = document.querySelector('.container');
+    var mgContainerDiv = document.querySelector('.mini-grid-container');
     var gridDiv = document.getElementById('grid');
 
     for( i=0; i < 200; i++ ) {
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     var miniGrid = document.createElement("DIV");
     miniGrid.classList.add('mini-grid');
-    ContainerDiv.appendChild(miniGrid);
+    mgContainerDiv.appendChild(miniGrid);
 
     for( i=0; i < 16; i++ ) {
         var cell = document.createElement("DIV");
@@ -179,9 +179,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //rotate the tetromino
     function rotate(dir) {
+        const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0 );
+        const isAtRightEdge = current.some(index => (currentPosition + index) % width === width-1 );
         undraw();
         console.log(currentRotation);
-        
 
         if (dir ==="right"){
             currentRotation++;
@@ -249,6 +250,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
             if(row.every(index => squares[index].classList.contains('taken'))){
                 score += 10;
+                //speed up game every 50 pts
                 if (score % 50 === 0) {
                     timerSpeed *= .8;
                     clearInterval(timerId);
@@ -269,7 +271,7 @@ document.addEventListener('DOMContentLoaded', () => {
     //Game over
     function gameOver(){
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
-            scoreDisplay.innerHTML = 'end';
+            // scoreDisplay.innerHTML = 'end';
             clearInterval(timerId);
         }
     }
