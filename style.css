@@ -1,6 +1,6 @@
 body {
     background-color:#cbf3f0;
-    font-family: "arial, sans serif";
+    font-family: arial, 'sans serif';
 }
 
 .container {
@@ -18,7 +18,7 @@ div.instrux {
 #grid {
     width: 300px;
     height: 600px;
-    background-color: #ffdab9;
+    background-color: #ebfac4;
     display: flex;
     flex-wrap: wrap;
 }
@@ -39,15 +39,14 @@ h3.score {
 
 #start-button {
     padding: 20px;
-    background-color: #90be6d;
+    background-color: #ffa200;
     display: inline-block;
     cursor: pointer;
     margin-left:20px;
+    font-weight: bold;
+    font-size: 20px;
 }
 
-div.mini-grid-container {
-    
-}
 
 h3.mgHeader {
     margin-left: 50px;

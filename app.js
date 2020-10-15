@@ -268,7 +268,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 //speed up game every 50 pts
                 if (score % 50 === 0) {
-                    timerSpeed *= .8;
+                    timerSpeed *= .7;
                     clearInterval(timerId);
                     timerId = setInterval(moveDown, timerSpeed);
                 }
