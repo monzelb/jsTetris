@@ -106,7 +106,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
     //assign functions to keycodes
     function control(e) {
-        console.log(e.which);
         if(e.which === 37) {
             moveLeft();
         }
@@ -182,7 +181,6 @@ document.addEventListener('DOMContentLoaded', () => {
         const isAtLeftEdge = current.some(index => (currentPosition + index) % width === 0 );
         const isAtRightEdge = current.some(index => (currentPosition + index) % width === width-1 );
         undraw();
-        console.log(currentRotation);
 
         if (dir ==="right"){
             currentRotation++;
@@ -255,8 +253,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 colors.push(colors[0]);
                 colors.shift();
-                console.log("currentPosition= " + currentPosition);
-                console.log("squares= " + squares);
                 document.querySelectorAll('div.tetromino').forEach(elem => {
                     var currentColor = elem.style.backgroundColor;
                     var currentColorArrIndex = colors.indexOf(currentColor);
@@ -274,7 +270,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (score % 50 === 0) {
                     timerSpeed *= .8;
                     clearInterval(timerId);
-                    setInterval(moveDown, timerSpeed);
+                    timerId = setInterval(moveDown, timerSpeed);
                 }
                 scoreDisplay.innerHTML = score;
                 row.forEach(index => {
@@ -289,26 +285,17 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    function componentToHex(c) {
-        var hex = c.toString(16);
-        return hex.length == 1 ? "0" + hex : hex;
-    }
-      
-    function rgbToHex(r, g, b) {
-        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
-    }
+
 
     //Game over
     function gameOver(){
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
+            console.log("game over");
             // scoreDisplay.innerHTML = 'end';
             clearInterval(timerId);
+            console.log("interval cleared");
         }
     }
-
-
-
-
 
 
 });
