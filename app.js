@@ -31,11 +31,11 @@ document.addEventListener('DOMContentLoaded', () => {
     let timerId;
     let score = 0;
     const colors = [
-        '#3a86ff',
-        '#8338ec',
-        '#ff006e',
-        '#fb5607',
-        '#ffbe0b'
+        'rgb(131, 56, 236)',
+        'rgb(255, 0, 110)',
+        'rgb(255, 190, 11)',
+        'rgb(58, 134, 255)',
+        'rgb(251, 86, 7)'
     ]
 
 
@@ -250,6 +250,26 @@ document.addEventListener('DOMContentLoaded', () => {
             const row = [i, i+1, i+2, i+3, i+4, i+5, i+6, i+7, i+8, i+9];
             if(row.every(index => squares[index].classList.contains('taken'))){
                 score += 10;
+
+
+
+                colors.push(colors[0]);
+                colors.shift();
+                console.log("currentPosition= " + currentPosition);
+                console.log("squares= " + squares);
+                document.querySelectorAll('div.tetromino').forEach(elem => {
+                    var currentColor = elem.style.backgroundColor;
+                    var currentColorArrIndex = colors.indexOf(currentColor);
+                    if (currentColor === colors[(colors.length + 1)]) {
+                        currentColor = colors[0];
+                    }
+                    else{
+                        currentColor = colors[currentColorArrIndex +1];
+                    }
+                    elem.style.backgroundColor = currentColor;
+                })
+
+
                 //speed up game every 50 pts
                 if (score % 50 === 0) {
                     timerSpeed *= .8;
@@ -268,6 +288,16 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     }
+
+    function componentToHex(c) {
+        var hex = c.toString(16);
+        return hex.length == 1 ? "0" + hex : hex;
+    }
+      
+    function rgbToHex(r, g, b) {
+        return "#" + componentToHex(r) + componentToHex(g) + componentToHex(b);
+    }
+
     //Game over
     function gameOver(){
         if(current.some(index => squares[currentPosition + index].classList.contains('taken'))){
