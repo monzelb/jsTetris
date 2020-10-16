@@ -8,7 +8,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     for( i=0; i < 10; i++ ) {
         var cell = document.createElement("DIV");
-        cell.classList.add('taken');
+        cell.classList.add('taken', 'floor');
         gridDiv.appendChild(cell);
     }
 
@@ -25,6 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let squares = Array.from(document.querySelectorAll('#grid div'));
     const scoreDisplay = document.querySelector('#score');
     const startBtn = document.querySelector('#start-button');
+    const newGameBtn = document.querySelector('#newGameButton');
     const width = 10;
     let nextRandom = 0;
     let timerSpeed = 1000;
@@ -242,6 +243,10 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     })
 
+    newGameBtn.addEventListener('click', () => {
+        newGame();
+    })
+
     // add score
     function addScore(){
         for(let i = 0; i < 199; i +=width){
@@ -293,8 +298,35 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("game over");
             // scoreDisplay.innerHTML = 'end';
             clearInterval(timerId);
-            console.log("interval cleared");
+            newGameBtn.style.display = 'inline-block';
+            startBtn.style.display = 'none';
+
         }
+    }
+
+    function newGame() {
+        clearInterval(timerId);
+        squares.forEach(index => {
+            index.classList.remove("taken", "tetromino");
+            index.style.backgroundColor = "";
+         });
+         document.querySelectorAll('.floor').forEach(index => {
+            index.classList.add('taken');
+         })
+         newGameBtn.style.display = 'none';
+         startBtn.style.display = 'block';            
+         nextRandom = Math.floor(Math.random()*theTetrominoes.length);
+         score = 0;
+         timerSpeed = 1000;
+         currentPosition = 4;
+         currentRotation = 0;
+         random = Math.floor(Math.random()*theTetrominoes.length);
+         current = theTetrominoes[random][0];
+         draw();
+         timerId = setInterval(moveDown, timerSpeed);
+         nextRandom = 0;
+         displayShape();
+
     }
 
 
