@@ -6,16 +6,26 @@
     <link rel="stylesheet" href="style.css"></link>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tetris</title>
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400&amp;display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <h3 class="score" >Score: <span id="score">0</span></h3>
-    <div id="start-button">Start/Pause</div>
+
 
     <div class="container">
+        <div class="title">
+            <div class="titleT">T</div>
+            <div class="titleE">E</div>
+            <div class="titleT">T</div>
+            <div class="titleR">R</div>
+            <div class="titleI">I</div>
+            <div class="titleS">S</div>
+        </div>
         <div class="instrux">
+            <div id="start-button">Start/Pause</div>
             <p>Move Right: ➡️</p>
             <p>Move Left: ⬅️</p>
+            <p>Move Down: ⬇️</p>
             <p>Rotate clockwise: <strong>Space bar</strong></p>
             <p>Rotate Counter-clockwise: <strong>Command</strong> </p>
 
@@ -24,7 +34,12 @@
         <div id="grid"></div>
 
         <div class="mini-grid-container">
+
+            <h3 class="score" >Score: <span id="score">0</span></h3>
+
             <h3 class="mgHeader">Up Next:</h3>
+
+
 
         </div>
     </div>

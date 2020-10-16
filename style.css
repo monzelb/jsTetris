@@ -6,6 +6,8 @@ body {
 .container {
     display: flex;
     justify-content: center;
+    padding-top: 20px;
+
 }
 
 div.instrux {
@@ -14,6 +16,39 @@ div.instrux {
     font-size: 20px;
     padding-right:20px;
 }
+
+div.title {
+    width:100px;
+    font-size: 80px;
+    padding-right:95px;
+}
+
+div.title div{
+    text-align: center;
+    font-family: 'Montserrat', arial, 'sans serif';
+    font-weight:bold;
+}
+
+div.title .titleT {
+    color: rgb(131, 56, 236);
+}
+
+div.title .titleE {
+    color: rgb(255, 0, 110);
+}
+
+div.title .titleR {
+    color: rgb(255, 190, 11);
+}
+
+div.title .titleI {
+    color: rgb(58, 134, 255);
+}
+
+div.title .titleS {
+    color: rgb(251, 86, 7);
+}
+
 
 #grid {
     width: 300px;
@@ -33,24 +68,28 @@ div.instrux {
 }
 
 h3.score {
-    display:inline-block;
-    margin-left:10%;
+    margin-left: 50px;
+    text-align: center;
+    margin-bottom: 30px;
+    font-size:22px;
 }
 
 #start-button {
     padding: 20px;
-    background-color: #ffa200;
     display: inline-block;
     cursor: pointer;
-    margin-left:20px;
     font-weight: bold;
     font-size: 20px;
+    background-color: rgb(58, 134, 255);
+    color: #fff;
 }
 
 
 h3.mgHeader {
     margin-left: 50px;
     text-align: center;
+    font-size: 20px;
+
 }
 
 div.mini-grid {
