@@ -232,10 +232,14 @@ document.addEventListener('DOMContentLoaded', () => {
     //add functionality to the button
     startBtn.addEventListener('click', () => {
         if (timerId) {
+            startBtn.innerHTML = 'Resume';
+            startBtn.style.backgroundColor = 'rgb(58, 134, 255)';
             clearInterval(timerId);
             timerId = null;
         }
         else {
+            startBtn.innerHTML = 'Pause';
+            startBtn.style.backgroundColor = '#da3636';
             draw();
             timerId = setInterval(moveDown, timerSpeed);
             nextRandom = Math.floor(Math.random()*theTetrominoes.length);
@@ -298,7 +302,7 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log("game over");
             // scoreDisplay.innerHTML = 'end';
             clearInterval(timerId);
-            newGameBtn.style.display = 'inline-block';
+            newGameBtn.style.display = 'block';
             startBtn.style.display = 'none';
 
         }
@@ -326,7 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
          timerId = setInterval(moveDown, timerSpeed);
          nextRandom = 0;
          displayShape();
-
+         startBtn.innerHTML = 'Pause';
     }
 
 
