@@ -76,7 +76,9 @@ h3.score {
 
 #start-button {
     padding: 20px;
-    display: inline-block;
+    text-align: center;
+    width:130px;
+    display: block;
     cursor: pointer;
     font-weight: bold;
     font-size: 20px;
@@ -86,13 +88,32 @@ h3.score {
 
 #newGameButton {
     padding: 20px;
-    display: inline-block;
+    text-align: center;
+    width:130px;
+    display: block;
     display: none;
     cursor: pointer;
     font-weight: bold;
     font-size: 20px;
     background-color: rgb(58, 134, 255);
     color: #fff;
+    animation-name: animation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;    
+    animation-play-state: running;
+}
+
+@-webkit-keyframes animation {
+    0%     {background-color: rgb(58, 134, 255);}
+    50.0%  {background-color:#03ac86;} /* your chosen 'mid' color */
+    100.0%  {background-color:rgb(58, 134, 255);}
+}
+
+@keyframes animation {
+    0%     {background-color: rgb(58, 134, 255);}
+    50.0%  {background-color:#03ac86;} 
+    100.0%  {background-color:rgb(58, 134, 255);}
 }
 
 
